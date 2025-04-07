@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: 'https://api.suaapp.com',
+    apiUrl: 'https://java-auth-jwt.onrender.com',
   };
   

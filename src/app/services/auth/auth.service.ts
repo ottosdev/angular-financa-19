@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { environment } from '../../environments/enviroment.dev';
+import { environment } from '../../../environments/enviroment.dev';
 import { IAuthResponse, ILoginDTO, IRegisterDTO } from '../../interface/auth.dto';
 
 @Injectable({
