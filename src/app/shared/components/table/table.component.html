@@ -1,0 +1,55 @@
+<div class="card">
+  <p-table #dt1 [value]="data" [paginator]="true" [rows]="5" dataKey="id" [rowHover]="true" [columns]="columns"
+    [rowHover]="true" currentPageReportTemplate="Mostrando {first} a {last} de {totalRecords} registros"
+    [showCurrentPageReport]="true">
+    <ng-template #caption>
+      <div class="flex items-center justify-between">
+        <h5 class="m-0">{{titulo}}</h5>
+        <p-iconfield>
+          <input 
+          class="border px-3 py-2 rounded-sm border-primary"
+          #filterInput 
+          pInputText 
+          type="text" 
+          (input)="dt1.filterGlobal(filterInput.value, 'contains')" 
+          placeholder="Digite para buscar" />
+        </p-iconfield>
+      </div>
+    </ng-template>
+
+    <!-- Cabeçalhos dinâmicos -->
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.sortable ? col.field : undefined">
+          {{ col.header }}
+          <p-sortIcon *ngIf="col.sortable" [field]="col.field" />
+        </th>
+        <th *ngIf="getActions" class="text-center">Ações</th>
+      </tr>
+    </ng-template>
+
+    <!-- Corpo dinâmico -->
+    <ng-template pTemplate="body" let-rowData>
+      <tr>
+        <td *ngFor="let col of columns">
+          <span *ngIf="col.type !== 'image'">{{ rowData[col.field] }}</span>
+        </td>
+        <td *ngIf="getActions">
+          <div class="flex justify-start items-start gap-1">
+            <button *ngFor="let action of getActions(rowData)" class="p-button p-button-sm p-button-text"
+              (click)="action.command?.(rowData)">
+              <i [class]="action.icon" class="mr-1"></i>
+            </button>
+          </div>
+        </td>
+      </tr>
+    </ng-template>
+
+    <!-- Summary -->
+    <ng-template pTemplate="summary">
+      <div class="flex items-center justify-between">
+        Total de registros: {{ data.length ? data.length : 0 }}
+      </div>
+    </ng-template>
+  </p-table>
+</div>

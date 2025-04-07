@@ -1,0 +1,12 @@
+<form [formGroup]="formGroup" class="w-full">
+    <p-floatlabel variant="on">
+        <input [type]="type" [id]="controlName" pInputText [formControlName]="controlName" class="w-full" autocomplete="off"
+            [placeholder]="placeholder" />
+
+        <label [for]="controlName">{{ label }}</label>
+    </p-floatlabel>
+
+    <div *ngIf="isInvalid()" class="text-red-500 text-sm mt-1">
+        {{ getErrorMessage() }}
+    </div>
+</form>

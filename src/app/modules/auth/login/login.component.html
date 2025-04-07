@@ -1,0 +1,14 @@
+<div class=" flex items-center justify-center h-screen">
+    <form [formGroup]="formGroup" (submit)="submit()" class="h-64 w-96">
+        <div class="rounded-md shadow-sm flex flex-col w-full gap-7">
+            <span class="text-center"><i class="pi pi-wallet pr-2"></i> Finanças</span>
+            <app-input-mask type="text" [formGroup]="formGroup" controlName="cpf" label="CPF" mask="999.999.999-99" />
+            <app-input-password [formGroup]="formGroup" controlName="senha" label="Senha"  />
+            <div class="flex w-full flex-col gap-2">
+                <span class="text-center text-xs text-zinc-500">Novo por Aqui? <strong class="text-primary cursor-pointer" (click)="handleGoToRegister()">Registre-se</strong></span>
+                <app-button label="Entrar" icon="pi pi-sign-in" type="submit" [loading]="loading"  />
+            </div>
+           
+        </div>
+    </form>
+</div>

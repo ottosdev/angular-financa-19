@@ -1,0 +1,35 @@
+<form [formGroup]="formgroup" (ngSubmit)="onSubmit()">
+
+    <p-card  class="w-full">
+
+        <ng-template pTemplate="content">
+
+            <h1 class="text-2xl font-bold mb-6 border-b border-zinc-100">Dados Pessoais</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:grid-cols-2 ">
+                <app-input controlName="nome" [formGroup]="formgroup" label="Nome"></app-input>
+                <app-input controlName="email" [formGroup]="formgroup" label="E-mail"></app-input>
+                <app-input-mask mask="(99)99999-9999" controlName="telefone" [formGroup]="formgroup"
+                    label="Telefone"></app-input-mask>
+                <app-input-mask mask="999.999.999-99" controlName="cpf" [formGroup]="formgroup"
+                    label="CPF"></app-input-mask>
+            </div>
+
+            <h1 class="text-2xl font-bold my-6 border-b border-zinc-100">Endereço</h1>
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 sm:grid-cols-2">
+                <app-input controlName="logradouro" [formGroup]="enderecoForm" label="Endereço"></app-input>
+                <app-input controlName="bairro" [formGroup]="enderecoForm" label="Bairro"></app-input>
+                <app-input controlName="numero" [formGroup]="enderecoForm" label="Número"></app-input>
+                <app-input controlName="complemento" [formGroup]="enderecoForm" label="Complemento"></app-input>
+                <app-input controlName="cidade" [formGroup]="enderecoForm" label="Cidade"></app-input>
+                <app-input controlName="uf" [formGroup]="enderecoForm" label="UF"></app-input>
+            </div>
+
+        </ng-template>
+        <ng-template pTemplate="footer">
+            <div class="flex justify-end">
+                <app-button type="submit" label="Salvar" [loading]="loading"></app-button>
+            </div>
+        </ng-template>
+
+    </p-card>
+</form>

@@ -1,0 +1,33 @@
+<p-toolbar styleClass="mb-6" class="w-full">
+  <ng-template #start></ng-template>
+  <ng-template #end>
+    <app-button label="Novo" icon="pi pi-plus" class="mr-2" (click)="openNew()"></app-button>
+  </ng-template>
+</p-toolbar>
+
+<app-table [data]="categorias" [columns]="colunasTable" [getActions]="getAcoesPorLinha" [titulo]="'Categorias'">x
+  <!-- <ng-template #acoesTemplate let-row>
+    <p-menu #menu [popup]="true" [model]="getAcoesPorLinha(row)"></p-menu>
+    <button pButton icon="pi pi-ellipsis-v" class="p-button-text" (click)="menu.toggle($event)"></button>
+  </ng-template> -->
+</app-table>
+
+<p-dialog [(visible)]="categoriaDialog" [style]="{ width: '450px' }" header="Categoria" [modal]="true">
+
+  <ng-template #content>
+    <form [formGroup]="formGroup">
+      <div class="flex flex-col gap-6">
+        <app-input type="text" [formGroup]="formGroup" controlName="nome" label="Nome" class="mt-1" />
+        <app-select [items]="categoriasOpcoes" [formGroup]="formGroup" controlName="tipo" label="Tipo de Categoria"
+          class="w-full" />
+      </div>
+    </form>
+  </ng-template>
+
+  <ng-template #footer>
+    <app-button label="{{categoriaSelecionada ? 'Editar': 'Salvar'}}" type="submit" (click)="handleSalvarCategoria()"
+      [loading]="loading" />
+    <app-button label="Cancelar" severity="danger" [disabled]="loading" (click)="hideDialog()" />
+  </ng-template>
+
+</p-dialog>

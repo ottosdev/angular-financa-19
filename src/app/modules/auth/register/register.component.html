@@ -1,0 +1,21 @@
+<div class=" flex items-center justify-center h-screen">
+    <form [formGroup]="formGroup" (submit)="submit()" class="w-96">
+        <div class="rounded-md shadow-sm flex flex-col w-full gap-3">
+            <div class="flex items-center justify-between    ">
+                <i class="pi pi-arrow-left !font-black !text-sm text-zinc-50 cursor-pointer" (click)="handleGoToLogin()"></i>
+                <span class="text-center"><i class="pi pi-user-plus pr-2"></i> Cadastrar</span>
+                <div></div>
+            </div>
+            <app-input type="text" [formGroup]="formGroup" controlName="nome" label="Nome" />
+            <app-input-mask type="text" [formGroup]="formGroup" controlName="cpf" label="CPF" mask="999.999.999-99" />
+            <app-input-mask type="text" [formGroup]="formGroup" controlName="telefone" label="Telefone"
+                mask="(99) 99999-9999" />
+            <app-input type="text" [formGroup]="formGroup" controlName="email" label="E-mail" />
+            <app-input-password [formGroup]="formGroup" controlName="senha" label="Senha" />
+            <app-input-password [formGroup]="formGroup" controlName="confirmarSenha" label="Confirmar Senha" />
+            <div class="flex w-full flex-col gap-2">
+                <app-button label="Cadastrar" type="submit" [loading]="loading" />
+            </div>
+        </div>
+    </form>
+</div>

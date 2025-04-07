@@ -1,0 +1,7 @@
+<div class="flex justify-between items-center p-4 bg-zinc-800 text-white">
+    <h1 class="text-3xl text-purple-700 font-bold tracking-[0.6rem]">Finanças</h1>
+    <div class="flex items-center gap-4">
+        <p-menu #menu [model]="items" [popup]="true"  class="menu-bar"/>
+        <p-button (click)="menu.toggle($event)" icon="pi pi-cog" [rounded]="true" [raised]="true" outlined/>
+    </div>
+</div>

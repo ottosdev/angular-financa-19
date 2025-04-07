@@ -1,0 +1,12 @@
+<form [formGroup]="formGroup" class="!w-full">
+    <p-floatlabel variant="on" >
+        <p-inputMask [type]="type" [mask]="mask" [id]="controlName" [autoClear]="false" [formControlName]="controlName"
+            class="input-mask" />
+
+        <label [for]="controlName">{{ label }}</label>
+    </p-floatlabel>
+
+    <div *ngIf="isInvalid()" class="text-red-500 text-sm mt-1">
+        Campo obrigatório ou inválido.
+    </div>
+</form>

@@ -1,0 +1,14 @@
+<form [formGroup]="formGroup">
+  <p-floatlabel class="w-full" variant="on">
+    <p-select
+      [formControlName]="controlName"
+      [options]="items"
+      optionLabel="label"
+      optionValue="value"
+      styleClass="w-full"
+      appendTo="body"
+      [inputId]="controlName"
+    />
+    <label [for]="controlName">{{ label }}</label>
+  </p-floatlabel>
+</form>
