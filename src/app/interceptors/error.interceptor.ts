@@ -19,7 +19,6 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
         }
         if (error.status === 401) {
           mensagem = error?.error?.mensagem || 'Error ao realizar operação';
-          router.navigate(['/login']);
         } else if (error.status === 403) {
           mensagem = error?.error?.mensagem || 'Acesso negado.';
         } else if (error.status === 404) {
