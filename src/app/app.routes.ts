@@ -7,6 +7,7 @@ import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
 import { CategoriaComponent } from './modules/private/categoria/categoria.component';
 import { PerfilComponent } from './modules/private/perfil/perfil.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
+import { TransacoesComponent } from './modules/private/transacoes/transacoes.component';
 
 export const routes: Routes = [
   {
@@ -37,6 +38,11 @@ export const routes: Routes = [
       {
         path: 'perfil',
         component: PerfilComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'transacao',
+        component: TransacoesComponent,
         canActivate: [authGuard],
       },
     ],

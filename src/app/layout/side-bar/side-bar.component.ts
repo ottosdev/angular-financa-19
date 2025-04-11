@@ -76,6 +76,7 @@ export class SideBarComponent {
     this.items = [
       { label: 'Home', icon: 'pi pi-home', routerLink: '/home' },
       { label: 'Categorias', icon: 'pi pi-list', routerLink: '/categorias' },
+      { label: 'Transação', icon: 'pi pi-list', routerLink: '/transacao' },
     ];
   }
 

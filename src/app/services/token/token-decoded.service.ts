@@ -46,7 +46,7 @@ export class TokenDecodedService {
     if (payload.dataExpiracao) {
       try {
         const dateParsed = parseISO(payload.dataExpiracao);
-        dataFormatada = format(dateParsed, "dd/MM/yyyy 'às' HH:mm", { locale: ptBR });
+        dataFormatada = format(dateParsed, "dd/MM/yyyy 'às' HH:mm", { locale: ptBR }); // Ultimo acesso
         
       } catch (err) {
         console.warn('Erro ao formatar dataExpiradacao:', err);

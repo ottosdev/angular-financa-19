@@ -47,6 +47,7 @@ export class CategoriaComponent {
   formGroup!: FormGroup;
   fb = inject(FormBuilder);
   toastService = inject(ToastService);
+
   categorias: any[] = [];
   categoriaDialog: boolean = false;
   categoriaSelecionada: ICategoriaResponse | null = null;

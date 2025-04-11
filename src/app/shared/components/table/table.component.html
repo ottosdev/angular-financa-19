@@ -32,7 +32,11 @@
     <ng-template pTemplate="body" let-rowData>
       <tr>
         <td *ngFor="let col of columns">
-          <span *ngIf="col.type !== 'image'">{{ rowData[col.field] }}</span>
+          <ng-container [ngSwitch]="col.type">
+            <span *ngSwitchDefault>{{ rowData[col.field] }}</span>
+            <span *ngSwitchCase="'currency'">{{ rowData[col.field]  | currency: 'BRL'}}</span>
+          </ng-container>
+        
         </td>
         <td *ngIf="getActions">
           <div class="flex justify-start items-start gap-1">

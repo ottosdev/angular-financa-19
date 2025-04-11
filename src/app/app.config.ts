@@ -5,10 +5,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import MyPreset from './mytheme';
 import {
-  HTTP_INTERCEPTORS,
   provideHttpClient,
   withInterceptors,
-  withInterceptorsFromDi,
 } from '@angular/common/http';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { errorInterceptor } from './interceptors/error.interceptor';

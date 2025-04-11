@@ -1,0 +1,36 @@
+<app-totalizadores [transacoes]="transacoes"></app-totalizadores>
+
+<section class="flex flex-col gap-4 mt-6">
+  <p-toolbar styleClass="mb-6" class="w-full">
+    <ng-template #start></ng-template>
+    <ng-template #end>
+      <app-button label="Novo" icon="pi pi-plus" class="mr-2" (click)="criarNovaTransacao()"></app-button>
+    </ng-template>
+  </p-toolbar>
+
+  <app-table [data]="transacoesTable" [getActions]="getAcoesPorLinha" [columns]="colunasTable"></app-table>
+  <p-dialog [(visible)]="transacaoDialog" [style]="{ width: '450px' }" header="Transação" [modal]="true">
+
+    <ng-template #content class="!w-full">
+      <form [formGroup]="formGroup" class="w-full">
+        <div class="flex flex-col gap-6 w-full">
+          <app-input type="text" [formGroup]="formGroup" controlName="nome" label="Nome" class="mt-1" />
+          <app-select [items]="categoriasOpcoes" [formGroup]="formGroup" controlName="tipo" label="Tipo de Categoria"
+            class="w-full" />
+          <app-input-money class="w-full" [formGroup]="formGroup" controlName="valor" label="Valor"></app-input-money>
+
+          @if(transacaoSelecionada) {
+          <app-input type="text" [formGroup]="formGroup" controlName="dataTransacao" label="Data Transação" />
+          }
+        </div>
+      </form>
+    </ng-template>
+
+    <ng-template #footer>
+      @if(!transacaoSelecionada) {
+        <app-button label="Salvar" type="submit" (click)="handleSalvarTransacao()" [loading]="loading" />
+      }
+      <app-button label="Cancelar" severity="danger" [disabled]="loading" (click)="hideDialog()" />
+     </ng-template>
+  </p-dialog>
+</section>
