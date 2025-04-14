@@ -11,6 +11,9 @@ export class ClienteService {
   private http = inject(HttpClient);
   private url = `${environment.apiUrl}/clientes`;
 
+  listarTodosClientes(): Observable<IClientDTO[]> {
+    return this.http.get<IClientDTO[]>(this.url);
+  }
 
   buscarClientePorId(id: string): Observable<IClientDTO> {
     return this.http.get<IClientDTO>(`${this.url}/${id}`);

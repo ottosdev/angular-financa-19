@@ -1,11 +1,10 @@
 import { Component, Input } from '@angular/core';
-import { InputTextModule } from 'primeng/inputtext';
+import { InputTextModule} from 'primeng/inputtext';
 import {
   FormGroup,
   ReactiveFormsModule,
 } from '@angular/forms';
 import { FloatLabel } from 'primeng/floatlabel';
-import { PasswordModule } from 'primeng/password';
 import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-input',
@@ -13,7 +12,6 @@ import { CommonModule } from '@angular/common';
     InputTextModule,
     FloatLabel,
     ReactiveFormsModule,
-    PasswordModule,
     CommonModule,
   ],
   templateUrl: './input.component.html',
@@ -36,10 +34,6 @@ export class InputComponent {
   getErrorMessage(): string {
     const control = this.formGroup.get(this.controlName);
     if (!control || !control.errors) return '';
-
-    if (this.senhasMatchs()) {
-      return 'As senhas não coincidem.';
-    }
   
     if (control.errors['required']) return 'Campo obrigatório.';
     if (control.errors['email']) return 'E-mail inválido.';
@@ -47,13 +41,5 @@ export class InputComponent {
     if (control.errors['maxlength']) return `Máximo de ${control.errors['maxlength'].requiredLength} caracteres.`;
   
     return 'Campo inválido.';
-  }
-
-  private senhasMatchs(): boolean | undefined{
-    return (
-      this.controlName === 'confirmarSenha' &&
-      this.formGroup.hasError('senhasDiferentes') &&
-      this.formGroup.get('confirmarSenha')?.touched
-    );
   }
 }

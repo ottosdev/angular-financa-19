@@ -1,28 +1,25 @@
 @if(transacoes) {
 <div class="grid grid-cols-3 gap-3">
-    <p-card class="border border-green-400  rounded-md">
-        <ng-template pTemplate="content">
-            <span class="font-bold text-2xl">Receitas</span>
-            <p class="text-xl font-bold text-green-500 text-end">
-                {{transacoes.receitas | currency:'BRL'}}
-            </p>
-        </ng-template>
-    </p-card>
-    <p-card class="border border-red-400 rounded-md">
-        <ng-template pTemplate="content">
-            <span class="font-bold text-2xl">Saída</span>
-            <p class="text-xl font-bold text-red-500 text-end">
-                {{transacoes.despesas | currency:'BRL'}}
-            </p>
-        </ng-template>
-    </p-card>
-    <p-card class="border border-gray-400 rounded-md">
-        <ng-template pTemplate="content">
-            <span class="font-bold text-2xl">Total</span>
-            <p class="text-xl font-bold text-gray-3 00 text-end">
-                {{transacoes.total | currency:'BRL'}}
-            </p>
-        </ng-template>
-    </p-card>
+    <div
+        class="border border-green-500 flex flex-col justify-between hover:bg-green-800 duration-300 rounded-md px-3 py-2">
+        <span class="font-bold text-2xl ">Receitas</span>
+        <p class="text-xl font-bold text-green-500  text-end ">
+            {{transacoes.receitas | currency:'BRL'}}
+        </p>
+    </div>
+    <div
+        class="border border-red-500 flex flex-col justify-between hover:bg-red-800 duration-300 rounded-md px-3 py-2">
+        <span class="font-bold text-2xl">Saída</span>
+        <p class="text-xl font-bold text-red-500 text-end">
+            {{transacoes.despesas | currency:'BRL'}}
+        </p>
+    </div>
+    <div
+        class="border border-gray-500 flex flex-col justify-between hover:bg-gray-800 duration-300 rounded-md px-3 py-2">
+        <span class="font-bold text-2xl">Total</span>
+        <p class="text-xl font-bold text-gray-3 00 text-end">
+            {{transacoes.total | currency:'BRL'}}
+        </p>
+    </div>
 </div>
 }
