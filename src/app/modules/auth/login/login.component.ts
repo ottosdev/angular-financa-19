@@ -72,7 +72,7 @@ export class LoginComponent implements OnInit {
     this.authService.login(data).subscribe({
       next: (response) => {
         this.authService.setLocalStorage(response);
-        this.router.navigate(['/home']);
+        this.router.navigate(['/transacao']);
         this.loading = false;
       },
       error: (error) => {

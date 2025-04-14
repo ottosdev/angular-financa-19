@@ -1,0 +1,22 @@
+@if(totais) {
+<div class="grid grid-cols-3 gap-2">
+    <div class="flex  gap-1 items-center justify-between rounded-[16px] h-5 bg-green-700 hover:bg-green-600 duration-300 px-4 ">
+        <span class="font-bold text-[12px] font-sans text-zinc-200 ">Receitas: </span>
+        <p class="text-[12px] font-bold text-green-300  text-end ">
+            {{totais.receitas | currency:'BRL'}}
+        </p>
+    </div>
+    <div class="flex  gap-1 items-center justify-between rounded-[16px] h-5 bg-red-700 hover:bg-red-600 duration-300 px-4 ">
+        <span class="font-bold  text-[12px] font-sans text-zinc-200 ">Despesas: </span>
+        <p class=" text-[12px] font-bold text-red-300  text-end ">
+            {{totais.despesas | currency:'BRL'}}
+        </p>
+    </div>
+    <div class="flex  gap-1 items-center justify-between rounded-[16px] h-5 bg-zinc-700 hover:bg-zinc-600 duration-300 px-4 ">
+        <span class="font-bold  text-[12px] font-sans text-zinc-200 ">Total: </span>
+        <p class=" text-[12px] font-bold text-zinc-300  text-end ">
+            {{totais.total | currency:'BRL'}}
+        </p>
+    </div>
+</div>
+}

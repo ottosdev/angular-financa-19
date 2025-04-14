@@ -1,7 +1,54 @@
 <div class="flex justify-between items-center p-4 bg-zinc-800 text-white">
-    <h1 class="text-3xl text-purple-700 font-bold tracking-[0.6rem]">Finanças</h1>
-    <div class="flex items-center gap-4">
-        <p-menu #menu [model]="items" [popup]="true"  class="menu-bar"/>
-        <p-button (click)="menu.toggle($event)" icon="pi pi-cog" [rounded]="true" [raised]="true" outlined/>
-    </div>
+  <app-totalizadores></app-totalizadores>
+
+
+  <div class="flex items-center gap-4">
+    <p-drawer [(visible)]="visible" header="" [closable]="false" styleClass="!w-full md:!w-80 lg:!w-[50rem]"
+      position="right">
+      <ng-template pTemplate="header">
+        <div class="flex justify-between w-full items-center border-b border-zinc-700 pb-2 ">
+          <div class="flex gap-2 items-center mt-5">
+            <p-avatar
+              image="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              shape="circle" size="large" class="rounded-full w-12 h-12 object-cover" />
+
+            <div *ngIf="visible">
+              <h1 class="text-md font-bold">Bem-vindo, {{payload?.nome}}</h1>
+              <p class="text-[12px] text-gray-500">Último acesso {{payload?.dataExpiracao}}</p>
+            </div>
+          </div>
+
+          <i class="pi pi-sign-out cursor-pointer text-red-200" (click)="showLogoutToast()"></i>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="content">
+
+        <p-tabs class="custom-tab" [(value)]="activeTabIndex" (valueChange)="onTabChange($event)">
+          <p-tablist>
+            <p-tab [value]="0">Perfil</p-tab>
+            <p-tab [value]="1">...</p-tab>
+          </p-tablist>
+          <p-tabpanels>
+
+            <p-tabpanel [value]="0">
+              <ng-container *ngIf="tabsLoaded[0]">
+                <app-perfil></app-perfil>
+              </ng-container>
+            </p-tabpanel>
+
+
+            <p-tabpanel [value]="1">
+              <ng-container *ngIf="tabsLoaded[1]">
+                teste
+              </ng-container>
+            </p-tabpanel>
+          </p-tabpanels>
+        </p-tabs>
+      </ng-template>
+
+    </p-drawer>
+    <p-button (click)="visible = true" icon="pi pi-cog" [rounded]="true" [raised]="true" outlined />
+    <!-- <p-menu #menu [model]="items" [popup]="true"  class="menu-bar"/>
+        <p-button (click)="menu.toggle($event)" icon="pi pi-cog" [rounded]="true" [raised]="true" outlined/> -->
+  </div>
 </div>

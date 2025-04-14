@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService } from 'primeng/api';
 export interface DialogOptions {
   header?: string;
   message?: string;
@@ -17,7 +17,6 @@ export class DialogService {
 
   constructor(
     private confirmationService: ConfirmationService,
-    private messageService: MessageService
   ) {}
 
   openDialog(options: DialogOptions) {

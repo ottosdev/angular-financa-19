@@ -1,6 +1,5 @@
 import { Routes } from '@angular/router';
 import { LoginComponent } from './modules/auth/login/login.component';
-import { HomeComponent } from './modules/private/home/home.component';
 import { authGuard } from './guards/auth.guard';
 import { loginGuard } from './guards/login.guard';
 import { AppLayoutComponent } from './layout/app-layout/app-layout.component';
@@ -25,11 +24,6 @@ export const routes: Routes = [
     component: AppLayoutComponent,
     canActivate: [authGuard],
     children: [
-      {
-        path: 'home',
-        component: HomeComponent,
-        canActivate: [authGuard],
-      },
       {
         path: 'categorias',
         component: CategoriaComponent,

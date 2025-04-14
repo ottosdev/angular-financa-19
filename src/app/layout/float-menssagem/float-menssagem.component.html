@@ -1,0 +1,33 @@
+<div class="card">
+    <div class="card">
+        <div style="position:relative; height: 500px;" class="flex items-center justify-center">
+            <p-speeddial [model]="items" type="linear" direction="up" [style]="{ position: 'absolute' }"
+                [buttonProps]="{ severity: 'primary', rounded: true }" [tooltipOptions]="{ tooltipPosition: 'left' }" />
+        </div>
+
+
+
+
+        <p-dialog header="Pesquise no ChatGPT" [(visible)]="showDialog" [modal]="true" [closable]="false"
+            [style]="{ width: '750px' }">
+
+            <div class="flex flex-col gap-4">
+                <form [formGroup]="formGroup" (ngSubmit)="enviarMensagem()">
+                    <div class="flex mt-1 gap-1">
+                        <app-input class="w-full" [formGroup]="formGroup" controlName="mensagem"
+                            label="Mensagem"></app-input>
+                        <app-button icon="pi pi-search" type="submit"></app-button>
+                    </div>
+                </form>
+                <div>
+                    {{mensagem}}
+                </div>
+            </div>
+
+        </p-dialog>
+
+
+
+    </div>
+
+</div>

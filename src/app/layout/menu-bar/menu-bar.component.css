@@ -1,3 +1,11 @@
 ::ng-deep .menu-bar .p-menu-submenu-label {
     padding: 0;
 }
+
+
+
+::ng-deep .custom-tab .p-tablist-tab-list {
+    background: #00000090;
+    border-radius: 8px;
+    padding: 0px ;
+}   

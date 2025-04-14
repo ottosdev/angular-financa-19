@@ -1,5 +1,4 @@
 import { Component, Inject, inject } from '@angular/core';
-import { TotalizadoresComponent } from './components/totalizadores/totalizadores.component';
 import { ToolbarModule } from 'primeng/toolbar';
 import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../../shared/components/button/button.component';
@@ -29,7 +28,6 @@ import { DialogService } from '../../../services/dialog/dialog.service';
   selector: 'app-transacoes',
   imports: [
     ReactiveFormsModule,
-    TotalizadoresComponent,
     ToolbarModule,
     ButtonComponent,
     CommonModule,
@@ -107,6 +105,11 @@ export class TransacoesComponent {
   }
 
   handleSalvarTransacao() {
+    if(this.formGroup.invalid) {
+      this.formGroup.markAllAsTouched();
+      return;
+    }
+
     const data: ITransacaoRequest = {
       nome: this.formGroup.get('nome')?.value,
       categoriaId: this.formGroup.get('tipo')?.value,
@@ -142,6 +145,7 @@ export class TransacoesComponent {
               dataTransacao: format(transacao.dataTransacao, 'dd/MM/yyyy'), 
             };
           });
+          this.transacaoService.atualizarTotais(res.receitas, res.despesas, res.total);
         },
       });
   }

@@ -1,7 +1,5 @@
-<app-totalizadores [transacoes]="transacoes"></app-totalizadores>
-
-<section class="flex flex-col gap-4 mt-6">
-  <p-toolbar styleClass="mb-6" class="w-full">
+  <section class="flex flex-col gap-4 ">
+  <p-toolbar  >
     <ng-template #start></ng-template>
     <ng-template #end>
       <app-button label="Novo" icon="pi pi-plus" class="mr-2" (click)="criarNovaTransacao()"></app-button>
@@ -28,9 +26,9 @@
 
     <ng-template #footer>
       @if(!transacaoSelecionada) {
-        <app-button label="Salvar" type="submit" (click)="handleSalvarTransacao()" [loading]="loading" />
+      <app-button label="Salvar" type="submit" (click)="handleSalvarTransacao()" [loading]="loading" [disabled]="loading" />
       }
       <app-button label="Cancelar" severity="danger" [disabled]="loading" (click)="hideDialog()" />
-     </ng-template>
+    </ng-template>
   </p-dialog>
 </section>

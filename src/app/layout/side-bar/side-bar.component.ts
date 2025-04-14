@@ -1,9 +1,5 @@
 import { CommonModule } from '@angular/common';
-import {
-  ChangeDetectorRef,
-  Component,
-  inject,
-} from '@angular/core';
+import { ChangeDetectorRef, Component, inject } from '@angular/core';
 import { NavigationEnd, Router, RouterModule } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { AvatarModule } from 'primeng/avatar';
@@ -74,9 +70,8 @@ export class SideBarComponent {
 
   criarMenu() {
     this.items = [
-      { label: 'Home', icon: 'pi pi-home', routerLink: '/home' },
+      { label: 'Transação', icon: 'pi pi-wallet', routerLink: '/transacao' },
       { label: 'Categorias', icon: 'pi pi-list', routerLink: '/categorias' },
-      { label: 'Transação', icon: 'pi pi-list', routerLink: '/transacao' },
     ];
   }
 

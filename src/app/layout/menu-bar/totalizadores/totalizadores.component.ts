@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { CardModule } from 'primeng/card';
-import { ITransacaoDTO } from '../../../../../interface/transacoes.dto';
 import { CommonModule } from '@angular/common';
+import { ITotais, TransacoesService } from '../../../services/transacoes/transacoes.service';
+
 
 @Component({
   selector: 'app-totalizadores',
@@ -10,5 +11,13 @@ import { CommonModule } from '@angular/common';
   styleUrl: './totalizadores.component.css',
 })
 export class TotalizadoresComponent {
-  @Input() transacoes!: ITransacaoDTO;
+  totais!: ITotais;
+
+  constructor(private transacoesService: TransacoesService) {}
+
+  ngOnInit(): void {
+    this.transacoesService.totais$.subscribe((dados) => {
+      this.totais = dados;
+    });
+  }
 }
