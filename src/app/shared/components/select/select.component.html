@@ -12,4 +12,9 @@
       />
     <label [for]="controlName">{{ label }}</label>
   </p-floatlabel>
+
+
+  <div *ngIf="isInvalid()" class="text-red-500 text-sm mt-1">
+    {{ getErrorMessage() }}
+</div>
 </form>
