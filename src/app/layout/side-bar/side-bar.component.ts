@@ -13,6 +13,7 @@ import {
   TokenDecodedService,
   TokenPayload,
 } from '../../services/token/token-decoded.service';
+import { MenuItensService } from '../../services/menu-itens/menu-itens.service';
 @Component({
   selector: 'app-side-bar',
   imports: [
@@ -28,18 +29,25 @@ import {
 })
 export class SideBarComponent {
   visible: boolean = false;
-  payload: TokenPayload | null = null;
-  items: MenuItem[] | undefined;
-
-  private router = inject(Router);
-  private cdr = inject(ChangeDetectorRef);
-  private authService = inject(AuthService);
-  private dialogService = inject(DialogService);
+  public menuService = inject(MenuItensService)
   private tokenDecoded = inject(TokenDecodedService);
 
+  trackByItemId(index: number, item: any): any {
+    return item.id;
+  }
+
+  payload: TokenPayload | null = null;
+  // items: MenuItem[] | undefined;
+
+  // private router = inject(Router);
+  // private cdr = inject(ChangeDetectorRef);
+  private authService = inject(AuthService);
+  private dialogService = inject(DialogService);
+  // private tokenDecoded = inject(TokenDecodedService);
+
   ngOnInit() {
-    this.criarMenu();
-    this.detectarMudançasRotas();
+    // this.criarMenu();
+    // this.detectarMudançasRotas();
 
     this.payload = this.tokenDecoded.getPayload();
   }
@@ -48,32 +56,32 @@ export class SideBarComponent {
     this.visible = !this.visible;
   }
 
-  rotaAtiva(routerLink: string): boolean {
-    if (!routerLink || routerLink.length === 0) {
-      return false;
-    }
+  // rotaAtiva(routerLink: string): boolean {
+  //   if (!routerLink || routerLink.length === 0) {
+  //     return false;
+  //   }
 
-    if (routerLink === '/') {
-      return this.router.url === '/';
-    }
+  //   if (routerLink === '/') {
+  //     return this.router.url === '/';
+  //   }
 
-    return this.router.url.startsWith(routerLink);
-  }
+  //   return this.router.url.startsWith(routerLink);
+  // }
 
-  detectarMudançasRotas() {
-    this.router.events
-      .pipe(filter((event) => event instanceof NavigationEnd))
-      .subscribe(() => {
-        this.cdr.markForCheck();
-      });
-  }
+  // detectarMudançasRotas() {
+  //   this.router.events
+  //     .pipe(filter((event) => event instanceof NavigationEnd))
+  //     .subscribe(() => {
+  //       this.cdr.markForCheck();
+  //     });
+  // }
 
-  criarMenu() {
-    this.items = [
-      { label: 'Transação', icon: 'pi pi-wallet', routerLink: '/transacao' },
-      { label: 'Categorias', icon: 'pi pi-list', routerLink: '/categorias' },
-    ];
-  }
+  // criarMenu() {
+  //   this.items = [
+  //     { label: 'Transação', icon: 'pi pi-wallet', routerLink: '/transacao' },
+  //     { label: 'Categorias', icon: 'pi pi-list', routerLink: '/categorias' },
+  //   ];
+  // }
 
   showLogoutToast() {
     this.dialogService.openDialog({

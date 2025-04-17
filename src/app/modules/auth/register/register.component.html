@@ -1,8 +1,10 @@
 <div class=" flex items-center justify-center h-screen">
-    <form [formGroup]="formGroup" (submit)="submit()" class="w-96">
-        <div class="rounded-md shadow-sm flex flex-col w-full gap-3">
-            <div class="flex items-center justify-between    ">
-                <i class="pi pi-arrow-left !font-black !text-sm text-zinc-50 cursor-pointer" (click)="handleGoToLogin()"></i>
+    <form [formGroup]="formGroup" (submit)="submit()" class="">
+        <div
+            class="rounded-4xl shadow-xl border-primary border-t-2 border-l-2 border-r-2  flex justify-center flex-col gap-3 bg-zinc-950 px-14 h-[600px] w-[425px]">
+            <div class="flex items-center justify-between  ">
+                <i class="pi pi-arrow-left !font-black !text-sm text-zinc-50 cursor-pointer"
+                    (click)="handleGoToLogin()"></i>
                 <span class="text-center"><i class="pi pi-user-plus pr-2"></i> Cadastrar</span>
                 <div></div>
             </div>

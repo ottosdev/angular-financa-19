@@ -6,7 +6,7 @@
     </ng-template>
   </p-toolbar>
 
-  <app-table [data]="transacoesTable" [getActions]="getAcoesPorLinha" [columns]="colunasTable"></app-table>
+  <app-table titulo="Transações" [data]="transacoesTable" [getActions]="getAcoesPorLinha" [columns]="colunasTable"></app-table>
   <p-dialog [(visible)]="transacaoDialog" [style]="{ width: '450px' }" header="Transação" [modal]="true">
 
     <ng-template #content class="!w-full">

@@ -1,47 +1,68 @@
-<div class="card flex flex-col items-center justify-between w-70 h-full bg-zinc-800 transition-all duration-300 ease-in-out"
-    [ngClass]="{
+<div
+  class="card flex flex-col items-center justify-between w-70 h-full bg-zinc-800 transition-all duration-300 ease-in-out"
+  [ngClass]="{
     'sm:w-20': !visible,
     'sm:w-[280px]': visible,
     'w-full': true
   }">
-    <div class="card flex flex-col items-center w-full">
-        <i (click)="handleVisibled()" class="pi pi-bars text-xl mt-3 cursor-pointer transition-transform duration-300 ease-in-out"
-            [ngClass]="{ 'rotate-180': !visible }"></i>
+  <nav class="card flex flex-col items-center w-full">
+    <i (click)="handleVisibled()"
+      class="pi pi-bars text-xl mt-3 cursor-pointer transition-transform duration-300 ease-in-out"
+      [ngClass]="{ 'rotate-180': !visible }"></i>
 
-        <div class="flex gap-2 items-center mt-5">
-            <p-avatar image="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" shape="circle" size="large" class="rounded-full w-12 h-12 object-cover" />
 
-            <div *ngIf="visible">
-                <h1 class="text-md font-bold">Bem-vindo, {{payload?.nome}}</h1>
-                <p class="text-[12px] text-gray-500">Último acesso {{payload?.dataExpiracao}}</p>
-            </div>
-        </div>
+    <div class="flex gap-2 items-center mt-5">
+      <p-avatar
+        image="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=2960&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        shape="circle" size="large" class="rounded-full w-12 h-12 object-cover" />
 
-        <div class="flex flex-col gap-2 w-full mt-9 px-3">
-            @for (item of items; track $index) {
-            <a [routerLink]="item.routerLink"
-                class="flex items-center justify-center gap-2 p-2 rounded-sm transition-colors cursor-pointer duration-300 w-full"
-                [ngClass]="{
-              'bg-primary text-white': rotaAtiva(item.routerLink),
-              'bg-gray-300': !rotaAtiva(item.routerLink),
-            }">
-                <i class="{{ item.icon }}"></i>
-
-                <span class="whitespace-nowrap text-center w-full transition-all duration-300"
-                    [class.hidden]="!visible">
-                    {{ item.label }}
-                </span>
-            </a>
-            }
-        </div>
+      <div *ngIf="visible">
+        <h1 class="text-md font-bold">Bem-vindo, {{ payload?.nome }}</h1>
+        <p class="text-[12px] text-gray-500">Último acesso {{ payload?.dataExpiracao }}</p>
+      </div>
     </div>
 
 
-    <button (click)="showLogoutToast()"
-        class="flex items-center justify-center bg-red-200 text-red-800 gap-2 p-2 rounded-sm transition-colors duration-300 w-full cursor-pointer">
-        <i class="pi pi-sign-out"></i>
-        <span *ngIf="visible">Sair</span>
-    </button>
 
 
+
+    <ul class="w-full px-4 mt-6">
+      <li *ngFor="let item of menuService.menuItems; trackBy: trackByItemId" class="mb-3">
+        <!-- Itens principais -->
+        <a [routerLink]="item.routerLink" *ngIf="item.isVisible && !item.subMenus?.length"
+          class="flex items-center gap-4 rounded-md sm:justify-center w-full px-3 py-2 transition-colors duration-300"
+          [ngClass]="{
+          'text-white font-semibold bg-primary ': item.isActive,
+          'text-white bg-zinc-700 hover:bg-primary': !item.isActive
+        }">
+          <i [ngClass]="item.icon"></i>
+          <span *ngIf="visible">{{ item.text }}</span>
+        </a>
+
+        <!-- Item com submenus -->
+        <div *ngIf="item.isVisible && item.subMenus?.length">
+          <p class="text-lg text-white  pt-2 pb-1 sm:text-sm">{{ item.text }}</p>
+
+          <ul class="">
+            <li *ngFor="let submenu of item.subMenus" class="mb-1">
+              <a [routerLink]="submenu.routerLink" *ngIf="submenu.isVisible"
+                class="flex items-center gap-4 rounded-md sm:justify-center w-full px-3 py-2 transition-colors duration-300"
+                [ngClass]="{
+              'text-white font-semibold bg-primary': submenu.isActive,
+              'text-white bg-zinc-700 hover:bg-primary': !submenu.isActive
+            }">
+                <i [ngClass]="submenu.icon"></i>
+                <span *ngIf="visible">{{ submenu.text }}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </nav>
+  <button (click)="showLogoutToast()"
+    class="flex items-center justify-center bg-red-200 text-red-800 gap-2 p-2 rounded-sm transition-colors duration-300 w-full cursor-pointer">
+    <i class="pi pi-sign-out"></i>
+    <span *ngIf="visible">Sair</span>
+  </button>
 </div>
