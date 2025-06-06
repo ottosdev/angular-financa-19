@@ -1,0 +1,38 @@
+.step-content {
+    margin-top: 2rem;
+  }
+  
+  .p-steps .pi-check {
+    font-size: 1.2rem;
+    color: #28a745;
+  }
+  
+  .p-button {
+    margin-top: 2rem;
+  }
+
+  .formulario {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+  }
+  
+  .erro {
+    color: red;
+    font-size: 0.8rem;
+  }
+  
+  /* ::ng-deep .p-steps-item-label {
+    color: transparent !important;
+  } */
+
+
+  .p-steps-item-check {
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  

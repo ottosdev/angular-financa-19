@@ -1,0 +1,47 @@
+<p-steps [model]="steps" [activeIndex]="activeIndex" [readonly]="true">
+    <ng-template let-item let-i="index" pTemplate="item">
+      <div class="p-menuitem-link">
+        <ng-container *ngIf="i < activeIndex; else numberIcon">
+          <i class="pi pi-check text-success p-steps-item-check"></i>
+        </ng-container>
+        <ng-template #numberIcon>
+          <span class="p-steps-item-number">{{ i + 1 }}</span>
+        </ng-template>
+        <span class="p-steps-title">{{ item.label }}</span>
+      </div>
+    </ng-template>
+  </p-steps>
+  
+
+
+<form [formGroup]="formAtual" class="formulario">
+    <ng-container [ngSwitch]="activeIndex">
+        <div *ngSwitchCase="0">
+            <label>Nome:</label>
+            <input pInputText formControlName="nome" />
+            <small *ngIf="formAtual.get('nome')?.invalid && formAtual.get('nome')?.touched" class="erro">
+                Nome é obrigatório.
+            </small>
+        </div>
+
+        <div *ngSwitchCase="1">
+            <label>Email:</label>
+            <input pInputText formControlName="email" />
+            <small *ngIf="formAtual.get('email')?.invalid && formAtual.get('email')?.touched" class="erro">
+                Email válido é obrigatório.
+            </small>
+        </div>
+
+        <div *ngSwitchCase="2">
+            <label>Cidade:</label>
+            <input pInputText formControlName="cidade" />
+            <small *ngIf="formAtual.get('cidade')?.invalid && formAtual.get('cidade')?.touched" class="erro">
+                Cidade é obrigatória.
+            </small>
+        </div>
+    </ng-container>
+</form>
+
+<button pButton type="button" [label]="isUltimoPasso() ? 'Finalizar' : 'Salvar e Avançar'" class="p-button-success mt-3"
+    (click)="salvarEAvancar()">
+</button>

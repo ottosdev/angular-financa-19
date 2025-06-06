@@ -1,18 +1,21 @@
 @if(totais) {
 <div class="grid grid-cols-3 gap-2">
-    <div class="flex  gap-1 items-center justify-between rounded-md h-5 bg-[#5DF2A5] hover:bg-green-600 duration-300 px-4 ">
+    <div
+        class="flex  gap-1 items-center justify-between rounded-md h-5 bg-[#5DF2A5] hover:bg-green-600 duration-300 px-4 ">
         <span class="font-bold text-[12px] font-sans text-zinc-800 ">Receitas: </span>
         <p class="text-[12px] font-bold text-zinc-800  text-end ">
             {{totais.receitas | currency:'BRL'}}
         </p>
     </div>
-    <div class="flex  gap-1 items-center justify-between rounded-md h-5 bg-[#FF7F9C] hover:bg-red-600 duration-300 px-4 ">
+    <div
+        class="flex  gap-1 items-center justify-between rounded-md h-5 bg-[#FF7F9C] hover:bg-red-600 duration-300 px-4 ">
         <span class="font-bold  text-[12px] font-sans text-zinc-800 ">Despesas: </span>
         <p class=" text-[12px] font-bold text-zinc-800  text-end ">
             {{totais.despesas | currency:'BRL'}}
         </p>
     </div>
-    <div class="flex  gap-1 items-center justify-between rounded-md h-5 bg-[#A88DFF] hover:bg-zinc-600 duration-300 px-4 ">
+    <div
+        class="flex  gap-1 items-center justify-between rounded-md h-5 bg-primary hover:bg-primary-600 duration-300 px-4 ">
         <span class="font-bold  text-[12px] font-sans text-zinc-800 ">Total: </span>
         <p class=" text-[12px] font-bold text-zinc-800  text-end ">
             {{totais.total | currency:'BRL'}}

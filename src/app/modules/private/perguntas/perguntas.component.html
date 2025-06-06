@@ -1,0 +1,38 @@
+<div class="card-container">
+  <div class="card-item" *ngFor="let item of itens">
+    <div class="card" (click)="abrirFormulario(item.rota)">
+      <div class="card-header">
+        <span>{{ item.titulo }}</span>
+
+        <div>
+          <button pButton type="button" icon="pi pi-ellipsis-v" class="p-button-text p-button-sm"
+            (click)="menu.toggle($event); $event.stopPropagation()">
+          </button>
+
+          <p-menu #menu [popup]="true" [model]="getMenu(item.id)" ></p-menu>
+        </div>
+
+
+
+
+      </div>
+
+
+      <div class="card-content">
+        <p>{{ item.descricao }}</p>
+      </div>
+
+      <div class="card-footer">
+        <div class="footer-indicador">
+          <ng-container *ngIf="item.preenchido; else vazio">
+            <i class="pi pi-check-circle sucesso"></i>
+          </ng-container>
+          <ng-template #vazio>
+            <div class="indicador-vazio"></div>
+            <span class="indicado-vazio-texto">Finalizado</span>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

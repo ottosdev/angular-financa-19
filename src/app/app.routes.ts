@@ -7,12 +7,32 @@ import { CategoriaComponent } from './modules/private/categoria/categoria.compon
 import { PerfilComponent } from './modules/private/perfil/perfil.component';
 import { RegisterComponent } from './modules/auth/register/register.component';
 import { TransacoesComponent } from './modules/private/transacoes/transacoes.component';
+import { PerguntasComponent } from './modules/private/perguntas/perguntas.component';
+import { TutorialComponent } from './modules/private/perguntas/components/formularios/tutorial/tutorial.component';
+import { FormLayoutComponent } from './modules/private/perguntas/components/formularios/form-layout/form-layout.component';
 
 export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
     canActivate: [loginGuard],
+  },
+  {
+    path: 'perguntas',
+    component: PerguntasComponent,
+    canActivate: [loginGuard],
+  },
+  {
+    path: 'formulario',
+    component: FormLayoutComponent,
+    canActivate: [loginGuard],
+    children: [
+      {
+        path: 'tutorial',
+        component: TutorialComponent,
+        canActivate: [loginGuard],
+      },
+    ],
   },
   {
     path: 'register',
